@@ -8,7 +8,7 @@ class Customer
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @name = options["name"]
-    @funds = options["funds"]
+    @funds = options["funds"].to_i
   end
 
   def save()
@@ -59,6 +59,13 @@ class Customer
     films = results.map do |order_hash|
     Film.new(order_hash)
     end
+  end
+
+  def remainder()
+    # roles = roles()
+    film_price = films.map{|film| film.price}.first
+    # combined_fees = role_fees.sum
+    return @funds - film_price
   end
 
 
