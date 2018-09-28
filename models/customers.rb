@@ -68,5 +68,17 @@ class Customer
     return @funds - film_price
   end
 
+  def tickets()
+    sql = "SELECT films.title
+    FROM films
+    INNER JOIN tickets
+    ON tickets.film_id = films.id
+    WHERE tickets.customer_id = $1"
+
+    results = SqlRunner.run(sql, [@id])
+    tickets = results.count
+  
+  end
+  # end
 
 end
