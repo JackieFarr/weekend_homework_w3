@@ -56,9 +56,8 @@ class Film
     WHERE tickets.film_id = $1"
 
     results = SqlRunner.run(sql, [@id])
-    customers = results.map do |order_hash|
-    Customer.new(order_hash)
-  end
+    customers = results.count
+  
   end
 
 
